@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Redis</h1>
+
+<p>This component demonstrates fetching data from the Redis.</p>
+
+<p *ngIf="!redisKeyValues"><em>Loading...</em></p>
+
+<dx-data-grid
+  [dataSource]="redisDataSource"
+  [showBorders]="true"
+  (onRowInserting)="onRowInserting($event)"
+  >
+
+  <dxo-paging [enabled]="true"></dxo-paging>
+  <dxo-editing 
+        mode="row"        
+        [allowAdding]="true">
+  </dxo-editing>
+
+  
+
+  <dxi-column dataField="Key" caption="کلید"></dxi-column>
+  <dxi-column dataField="Value" caption="مقدار"></dxi-column>
+
+</dx-data-grid>
