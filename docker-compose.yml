@@ -1,0 +1,33 @@
+version: "3"
+services:
+#    angularwebapplication:
+#        container_name: "angularwebapplication:dev"
+#        build: .
+#        ports:
+#            - "32774:80"
+#            - "8001:443"
+#        environment:
+#            - "ASPNETCORE_ENVIRONMENT=Development"          
+#            - "ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true"
+#            - "ASPNETCORE_URLS=	http://+:80"
+#            - "DOTNET_RUNNING_IN_CONTAINER=true"
+#            - "DOTNET_USE_POLLING_FILE_WATCHER=1"
+#            - "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2"
+#            - "NUGET_PACKAGES=/root/.nuget/fallbackpackages2"
+#            - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+#
+#
+#        #     - "ASPNETCORE_URLS=https://+;http://+"
+#        #     - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+#        #     - Kestrel__Certificates__Default__Password=SecretPassword
+#        image: angularwebapplication  
+#        restart: on-failure        
+#        depends_on:
+#            - redis
+    redis:
+        container_name: local-redis
+        ports:
+            - 6379:6379  
+        image: redis
+                
+    

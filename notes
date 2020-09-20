@@ -1,0 +1,5 @@
+docker image ls
+docker image rm angularwebapplication:dev
+docker build --tag angularwebapplication:dev .
+docker container run --name angularwebapplication -p 32774:80 angularwebapplication:dev
+docker image ls

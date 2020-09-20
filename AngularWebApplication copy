@@ -16,12 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -39,12 +33,6 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\http-interceptors\index.ts" />
-    <None Remove="ClientApp\src\Types\List.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Remove="ClientApp\src\app\curd\curd.component.spec.ts" />
-    <TypeScriptCompile Remove="ClientApp\src\app\curd\curd.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +47,7 @@
     <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
     <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-  </Target>  
+  </Target>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
@@ -78,5 +66,5 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
-  
+
 </Project>

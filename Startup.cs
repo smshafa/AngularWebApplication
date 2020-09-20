@@ -1,3 +1,4 @@
+using EFGetStarted;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,11 @@ namespace AngularWebApplication
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            using (var client = new BloggingContext())
+            {
+                client.Database.EnsureCreated();
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -27,6 +33,7 @@ namespace AngularWebApplication
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddEntityFrameworkSqlite().AddDbContext<BloggingContext>();
 
 
             IConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost");            
