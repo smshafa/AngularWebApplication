@@ -18,6 +18,7 @@ import { RedisComponent } from './redis/redis.component';
 import { DevExtremeModule } from "devextreme-angular"; 
 import { httpInterceptorProviders } from '../http-interceptors';
 import { AuthService } from './authentication/auth.service';
+import { CurdComponent } from './curd/curd.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AuthService } from './authentication/auth.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    RedisComponent
+    RedisComponent,
+    CurdComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +39,8 @@ import { AuthService } from './authentication/auth.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'redis', component: RedisComponent }
+      { path: 'redis', component: RedisComponent },
+      { path: 'curd', component: CurdComponent },
     ]),
     //DxDataGridModule,
     DevExtremeModule

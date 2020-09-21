@@ -7,18 +7,11 @@
 <dx-data-grid
   [dataSource]="sqlliteDataSource"
   [showBorders]="true"
-  (onRowInserting)="onRowInserting($event)"
   >
+  <dxo-paging [enabled]="true"></dxo-paging>  
 
-  <dxo-paging [enabled]="true"></dxo-paging>
-  <dxo-editing 
-        mode="row"        
-        [allowAdding]="true">
-  </dxo-editing>
-
-  
-
-  <dxi-column dataField="Key" caption="کلید"></dxi-column>
-  <dxi-column dataField="Value" caption="مقدار"></dxi-column>
+  <dxi-column dataField="url" caption="آدرس"></dxi-column>
+  <dxi-column dataField="title" caption="عنوان وبلاگ "></dxi-column>
+  <dxi-column dataField="content" caption="محتویات "></dxi-column>
 
 </dx-data-grid>

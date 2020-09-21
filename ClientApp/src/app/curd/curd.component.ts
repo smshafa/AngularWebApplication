@@ -1,45 +1,36 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CurdService } from './curd.service';
 
 @Component({
   selector: 'app-curd',
   templateUrl: './curd.component.html',
-  styleUrls: ['./curd.component.scss']
+  styleUrls: ['./curd.component.scss'],
+  providers:  [ CurdService ]
 })
 
 export class CurdComponent implements OnInit {
 
-  private _baseUrl: string;
-  public sqlliteDataSource: List<IBlogViewModel>;
+  public sqlliteDataSource: BlogViewModel[];
 
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this._baseUrl = baseUrl;
+  constructor(private curdService: CurdService) {
   }
+
   ngOnInit(): void {
     this.getBlogData();
   }
 
   public getBlogData(): void {
-    this.http.get<List<IBlogViewModel>>(this._baseUrl + 'api/blog/curd').subscribe(x => this.sqlliteDataSource = x);
+    this.curdService.getAllBlogs().subscribe(response => this.sqlliteDataSource = response);
   }
 }
 
-
-export interface IBlogViewModel {
+export interface BlogViewModel {
   BlogId: number;
-  Url: string;
-  Posts: List<IPost>;
-}
-
-
-export interface IPost {
   PostId: number;
-  Title: string;
-  Content: string;
-
-  BlogId: number;
-  Blog: IBlogViewModel;
+  Url: string
+  Title: string
+  Content: string
 }
 

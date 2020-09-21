@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AngularWebApplication.Models;
 using EFGetStarted;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +11,33 @@ namespace AngularWebApplication.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
+        public BlogController()
+        {
+
+        }
+
+        [HttpGet]
+        public List<BlogViewModel> Get()
+        {
+            List<BlogViewModel> result;
+            using (var db = new BloggingContext())
+            {
+                result = (from b in db.Blogs
+                           join c in db.Posts on b.BlogId equals c.BlogId
+                           orderby b.BlogId
+                           select new BlogViewModel
+                           {
+                               BlogId = b.BlogId,
+                               PostId = c.PostId,
+                               Url = b.Url,
+                               Title = c.Title,
+                               Content = c.Content
+                           }).ToList();
+            }
+
+            return result;
+        }
+
         [HttpGet]
         [Route("Curd")]
         public void Curd()

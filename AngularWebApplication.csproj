@@ -45,6 +45,7 @@
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\curd\curd.component.spec.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\curd\curd.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\curd\curd.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
